@@ -4,12 +4,14 @@ title = 'Blog Lập Trình Mạng | Đào Quang Hòa'
 theme = 'PaperMod'
 
 [params]
-    # Bật chế độ Home-Info để hiện lời chào chuyên nghiệp
-    [params.homeInfoParams]
-        Title = "Chào mừng đến với Blog của Hòa! 👋"
-        Content = "Nơi chia sẻ kiến thức về Socket Programming, Java Backend và Hệ thống Real-time."
+    # Kích hoạt chế độ hồ sơ cá nhân để trang chủ đẹp hơn
+    [params.profileMode]
+        enabled = true
+        title = "Đào Quang Hòa"
+        subtitle = "Sinh viên CNTT | Chuyên sâu Network Programming"
+        imageUrl = "images/avatar.jpg"
 
-    # Cấu hình Menu để hiện "Blog" và "Hồ sơ"
+    # Menu điều hướng (Blog và Hồ sơ)
     [[menu.main]]
         identifier = "posts"
         name = "Blog"
