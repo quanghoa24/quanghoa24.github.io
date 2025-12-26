@@ -4,12 +4,12 @@ title = 'Blog Lập Trình Mạng | Đào Quang Hòa'
 theme = 'PaperMod'
 
 [params]
-    # Kích hoạt Home-info Mode để hiện giới thiệu ở trang chủ
+    # Bật chế độ Home-Info để hiện lời chào chuyên nghiệp
     [params.homeInfoParams]
         Title = "Chào mừng đến với Blog của Hòa! 👋"
-        Content = "Nơi chia sẻ kiến thức về Socket, Java Backend và JavaScript Real-time."
+        Content = "Nơi chia sẻ kiến thức về Socket Programming, Java Backend và Hệ thống Real-time."
 
-    # Menu điều hướng
+    # Cấu hình Menu để hiện "Blog" và "Hồ sơ"
     [[menu.main]]
         identifier = "posts"
         name = "Blog"
