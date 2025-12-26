@@ -1,35 +1,229 @@
 <!DOCTYPE html>
-<html>
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-    <meta charset="UTF-8">
-    <title>Socket là gì? Khái niệm nền tảng về giao thức TCP/IP và UDP</title>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Socket là gì? Khái niệm nền tảng về giao thức TCP/IP và UDP | Blog Lập Trình Mạng | Đào Quang Hòa</title>
+<meta name="keywords" content="">
+<meta name="description" content="Phân tích chuyên sâu về cơ chế Socket, vai trò của cổng (Port) và sự khác biệt giữa TCP/UDP Socket trong lập trình hệ thống.">
+<meta name="author" content="Đào Quang Hòa">
+<link rel="canonical" href="http://localhost:1313/posts/bai-1/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fd5566c526ae48aadabd950798a2dc3568536401560eae5caac3765a42a9e7b5.css" integrity="sha256-/VVmxSauSKravZUHmKLcNWhTZAFWDq5cqsN2WkKp57U=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/bai-1/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="http://localhost:1313/posts/bai-1/">
+  <meta property="og:site_name" content="Blog Lập Trình Mạng | Đào Quang Hòa">
+  <meta property="og:title" content="Socket là gì? Khái niệm nền tảng về giao thức TCP/IP và UDP">
+  <meta property="og:description" content="Phân tích chuyên sâu về cơ chế Socket, vai trò của cổng (Port) và sự khác biệt giữa TCP/UDP Socket trong lập trình hệ thống.">
+  <meta property="og:locale" content="vi-vn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-12-26T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-12-26T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Socket là gì? Khái niệm nền tảng về giao thức TCP/IP và UDP">
+<meta name="twitter:description" content="Phân tích chuyên sâu về cơ chế Socket, vai trò của cổng (Port) và sự khác biệt giữa TCP/UDP Socket trong lập trình hệ thống.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Socket là gì? Khái niệm nền tảng về giao thức TCP/IP và UDP",
+      "item": "http://localhost:1313/posts/bai-1/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Socket là gì? Khái niệm nền tảng về giao thức TCP/IP và UDP",
+  "name": "Socket là gì? Khái niệm nền tảng về giao thức TCP\/IP và UDP",
+  "description": "Phân tích chuyên sâu về cơ chế Socket, vai trò của cổng (Port) và sự khác biệt giữa TCP/UDP Socket trong lập trình hệ thống.",
+  "keywords": [
+    
+  ],
+  "articleBody": "\nSocket là một trong các khái niệm quen thuộc với lập trình viên, có cách thức hoạt động tương tự như một tập tin descriptor cấp thấp. Hiểu một cách đơn giản, Socket là điểm cuối (endpoint) của một liên kết truyền thông hai chiều giữa hai chương trình chạy trên mạng.\n1. Bản chất kỹ thuật của Socket Về mặt kỹ thuật, Socket là sự kết hợp giữa Địa chỉ IP và Số cổng (Port number).\nĐịa chỉ IP: Xác định thiết bị trong mạng. Số cổng: Xác định ứng dụng cụ thể trên thiết bị đó. Công thức: Socket = IP Address + Port Number 2. Phân loại Socket phổ biến Trong lập trình mạng, chúng ta chủ yếu làm việc với hai loại Socket dựa trên giao thức tầng Transport:\n2.1. Stream Socket (Dựa trên TCP) Đặc điểm: Hướng kết nối (Connection-oriented). Cơ chế: Dữ liệu được truyền đi đảm bảo không bị mất mát, đúng thứ tự và không bị lặp lại. Ứng dụng: Web (HTTP), Email (SMTP), Truyền file (FTP). 2.2. Datagram Socket (Dựa trên UDP) Đặc điểm: Không hướng kết nối (Connectionless). Cơ chế: Dữ liệu được gửi đi nhanh chóng nhưng không đảm bảo độ tin cậy. Gói tin có thể bị mất hoặc đến sai thứ tự. Ứng dụng: Streaming video, Voice chat, Game online. 3. Quy trình hoạt động của mô hình Client-Server Một hệ thống sử dụng Socket thường trải qua các bước sau:\nSocket(): Tạo một endpoint mới. Bind(): Gán địa chỉ IP và Port cho Socket (thường thực hiện ở phía Server). Listen(): Server đợi kết nối từ Client. Accept(): Chấp nhận kết nối. Connect(): Client yêu cầu kết nối tới Server. Send/Receive: Trao đổi dữ liệu. Close(): Đóng kết nối. 4. Tại sao Socket lại quan trọng? Nếu không có Socket, việc lập trình mạng sẽ trở nên cực kỳ phức tạp vì lập trình viên phải tự xử lý các tầng giao thức vật lý và logic thấp hơn. Socket cung cấp một lớp trừu tượng (Abstraction layer) giúp chúng ta chỉ cần tập trung vào việc gửi và nhận dữ liệu giữa các tiến trình.\nBài viết này nằm trong chuỗi series về Lập trình mạng Java/JS chuyên sâu của Đào Quang Hòa.\n",
+  "wordCount" : "378",
+  "inLanguage": "en",
+  "datePublished": "2025-12-26T00:00:00Z",
+  "dateModified": "2025-12-26T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Đào Quang Hòa"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/posts/bai-1/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Blog Lập Trình Mạng | Đào Quang Hòa",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
 </head>
-<body>
-    <h1>Socket là gì? Khái niệm nền tảng về giao thức TCP/IP và UDP</h1>
-    <p><img alt="Socket Programming" loading="lazy" src="https://cloud-web-cms-beta.s3.cloud.cmctelecom.vn/socket_eb5681c677.jpg"></p>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Blog Lập Trình Mạng | Đào Quang Hòa (Alt + H)">Blog Lập Trình Mạng | Đào Quang Hòa</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/" title="Trang chủ">
+                    <span>Trang chủ</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/posts" title="Blog">
+                    <span>Blog</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about" title="Hồ sơ">
+                    <span>Hồ sơ</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Socket là gì? Khái niệm nền tảng về giao thức TCP/IP và UDP
+    </h1>
+    <div class="post-description">
+      Phân tích chuyên sâu về cơ chế Socket, vai trò của cổng (Port) và sự khác biệt giữa TCP/UDP Socket trong lập trình hệ thống.
+    </div>
+    <div class="post-meta"><span title='2025-12-26 00:00:00 +0000 UTC'>December 26, 2025</span>&nbsp;·&nbsp;<span>Đào Quang Hòa</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p><img alt="Socket Programming" loading="lazy" src="https://cloud-web-cms-beta.s3.cloud.cmctelecom.vn/socket_eb5681c677.jpg"></p>
 <p>Socket là một trong các khái niệm quen thuộc với lập trình viên, có cách thức hoạt động tương tự như một tập tin descriptor cấp thấp. Hiểu một cách đơn giản, Socket là điểm cuối (endpoint) của một liên kết truyền thông hai chiều giữa hai chương trình chạy trên mạng.</p>
-<h2 id="1-bản-chất-kỹ-thuật-của-socket">1. Bản chất kỹ thuật của Socket</h2>
+<h2 id="1-bản-chất-kỹ-thuật-của-socket">1. Bản chất kỹ thuật của Socket<a hidden class="anchor" aria-hidden="true" href="#1-bản-chất-kỹ-thuật-của-socket">#</a></h2>
 <p>Về mặt kỹ thuật, Socket là sự kết hợp giữa <strong>Địa chỉ IP</strong> và <strong>Số cổng (Port number)</strong>.</p>
 <ul>
 <li><strong>Địa chỉ IP:</strong> Xác định thiết bị trong mạng.</li>
 <li><strong>Số cổng:</strong> Xác định ứng dụng cụ thể trên thiết bị đó.</li>
 <li><strong>Công thức:</strong> <code>Socket = IP Address + Port Number</code></li>
 </ul>
-<h2 id="2-phân-loại-socket-phổ-biến">2. Phân loại Socket phổ biến</h2>
+<h2 id="2-phân-loại-socket-phổ-biến">2. Phân loại Socket phổ biến<a hidden class="anchor" aria-hidden="true" href="#2-phân-loại-socket-phổ-biến">#</a></h2>
 <p>Trong lập trình mạng, chúng ta chủ yếu làm việc với hai loại Socket dựa trên giao thức tầng Transport:</p>
-<h3 id="21-stream-socket-dựa-trên-tcp">2.1. Stream Socket (Dựa trên TCP)</h3>
+<h3 id="21-stream-socket-dựa-trên-tcp">2.1. Stream Socket (Dựa trên TCP)<a hidden class="anchor" aria-hidden="true" href="#21-stream-socket-dựa-trên-tcp">#</a></h3>
 <ul>
 <li><strong>Đặc điểm:</strong> Hướng kết nối (Connection-oriented).</li>
 <li><strong>Cơ chế:</strong> Dữ liệu được truyền đi đảm bảo không bị mất mát, đúng thứ tự và không bị lặp lại.</li>
 <li><strong>Ứng dụng:</strong> Web (HTTP), Email (SMTP), Truyền file (FTP).</li>
 </ul>
-<h3 id="22-datagram-socket-dựa-trên-udp">2.2. Datagram Socket (Dựa trên UDP)</h3>
+<h3 id="22-datagram-socket-dựa-trên-udp">2.2. Datagram Socket (Dựa trên UDP)<a hidden class="anchor" aria-hidden="true" href="#22-datagram-socket-dựa-trên-udp">#</a></h3>
 <ul>
 <li><strong>Đặc điểm:</strong> Không hướng kết nối (Connectionless).</li>
 <li><strong>Cơ chế:</strong> Dữ liệu được gửi đi nhanh chóng nhưng không đảm bảo độ tin cậy. Gói tin có thể bị mất hoặc đến sai thứ tự.</li>
 <li><strong>Ứng dụng:</strong> Streaming video, Voice chat, Game online.</li>
 </ul>
-<h2 id="3-quy-trình-hoạt-động-của-mô-hình-client-server">3. Quy trình hoạt động của mô hình Client-Server</h2>
+<h2 id="3-quy-trình-hoạt-động-của-mô-hình-client-server">3. Quy trình hoạt động của mô hình Client-Server<a hidden class="anchor" aria-hidden="true" href="#3-quy-trình-hoạt-động-của-mô-hình-client-server">#</a></h2>
 <p>Một hệ thống sử dụng Socket thường trải qua các bước sau:</p>
 <ol>
 <li><strong>Socket():</strong> Tạo một endpoint mới.</li>
@@ -40,10 +234,96 @@
 <li><strong>Send/Receive:</strong> Trao đổi dữ liệu.</li>
 <li><strong>Close():</strong> Đóng kết nối.</li>
 </ol>
-<h2 id="4-tại-sao-socket-lại-quan-trọng">4. Tại sao Socket lại quan trọng?</h2>
+<h2 id="4-tại-sao-socket-lại-quan-trọng">4. Tại sao Socket lại quan trọng?<a hidden class="anchor" aria-hidden="true" href="#4-tại-sao-socket-lại-quan-trọng">#</a></h2>
 <p>Nếu không có Socket, việc lập trình mạng sẽ trở nên cực kỳ phức tạp vì lập trình viên phải tự xử lý các tầng giao thức vật lý và logic thấp hơn. Socket cung cấp một lớp trừu tượng (Abstraction layer) giúp chúng ta chỉ cần tập trung vào việc gửi và nhận dữ liệu giữa các tiến trình.</p>
 <hr>
 <p><em>Bài viết này nằm trong chuỗi series về Lập trình mạng Java/JS chuyên sâu của Đào Quang Hòa.</em></p>
 
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="http://localhost:1313/">Blog Lập Trình Mạng | Đào Quang Hòa</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
 </body>
+
 </html>

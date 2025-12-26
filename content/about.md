@@ -16,7 +16,7 @@ Trở thành một Kỹ sư hệ thống (System Engineer) chuyên sâu về m�
 ---
 
 ## 🎓 Quá trình đào tạo
-- **Chuyên ngành:** Khoa học Máy tính / Công nghệ phần mềm.
+- **Chuyên ngành:** An ninh mạng
 - **Lĩnh vực nghiên cứu:** - Giao thức truyền tải tầng Transport (TCP/UDP).
   - Kiến trúc hướng dịch vụ (SOA) và RESTful API.
   - Cơ chế đồng bộ và bất đồng bộ trong môi trường mạng.

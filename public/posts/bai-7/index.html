@@ -1,16 +1,221 @@
 <!DOCTYPE html>
-<html>
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-    <meta charset="UTF-8">
-    <title>Xử lý Bất đồng bộ trong JavaScript: Từ Callback đến Async/Await</title>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Xử lý Bất đồng bộ trong JavaScript: Từ Callback đến Async/Await | Blog Lập Trình Mạng | Đào Quang Hòa</title>
+<meta name="keywords" content="">
+<meta name="description" content="
+⚠️ Lưu ý: Bài đăng này mang tính tổng hợp kiến thức, luồng kiến trúc và đã không được cập nhật trong 3 năm. Tuy nhiên, tư duy thiết kế realtime system với Socket.IO &#43; Redis vẫn còn giá trị sử dụng cao.
+
+
+Giới thiệu
+Chào các bạn 👋
+Trong phát triển ứng dụng realtime, Socket.IO là một trong những lựa chọn phổ biến nhất giúp duy trì kết nối hai chiều giữa client và server.">
+<meta name="author" content="Đào Quang Hòa">
+<link rel="canonical" href="http://localhost:1313/posts/bai-7/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fd5566c526ae48aadabd950798a2dc3568536401560eae5caac3765a42a9e7b5.css" integrity="sha256-/VVmxSauSKravZUHmKLcNWhTZAFWDq5cqsN2WkKp57U=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/bai-7/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="http://localhost:1313/posts/bai-7/">
+  <meta property="og:site_name" content="Blog Lập Trình Mạng | Đào Quang Hòa">
+  <meta property="og:title" content="Xử lý Bất đồng bộ trong JavaScript: Từ Callback đến Async/Await">
+  <meta property="og:description" content=" ⚠️ Lưu ý: Bài đăng này mang tính tổng hợp kiến thức, luồng kiến trúc và đã không được cập nhật trong 3 năm. Tuy nhiên, tư duy thiết kế realtime system với Socket.IO &#43; Redis vẫn còn giá trị sử dụng cao.
+Giới thiệu Chào các bạn 👋
+Trong phát triển ứng dụng realtime, Socket.IO là một trong những lựa chọn phổ biến nhất giúp duy trì kết nối hai chiều giữa client và server.">
+  <meta property="og:locale" content="vi-vn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-05-21T10:00:00+07:00">
+    <meta property="article:modified_time" content="2024-05-21T10:00:00+07:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Xử lý Bất đồng bộ trong JavaScript: Từ Callback đến Async/Await">
+<meta name="twitter:description" content="
+⚠️ Lưu ý: Bài đăng này mang tính tổng hợp kiến thức, luồng kiến trúc và đã không được cập nhật trong 3 năm. Tuy nhiên, tư duy thiết kế realtime system với Socket.IO &#43; Redis vẫn còn giá trị sử dụng cao.
+
+
+Giới thiệu
+Chào các bạn 👋
+Trong phát triển ứng dụng realtime, Socket.IO là một trong những lựa chọn phổ biến nhất giúp duy trì kết nối hai chiều giữa client và server.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Xử lý Bất đồng bộ trong JavaScript: Từ Callback đến Async/Await",
+      "item": "http://localhost:1313/posts/bai-7/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Xử lý Bất đồng bộ trong JavaScript: Từ Callback đến Async/Await",
+  "name": "Xử lý Bất đồng bộ trong JavaScript: Từ Callback đến Async\/Await",
+  "description": " ⚠️ Lưu ý: Bài đăng này mang tính tổng hợp kiến thức, luồng kiến trúc và đã không được cập nhật trong 3 năm. Tuy nhiên, tư duy thiết kế realtime system với Socket.IO + Redis vẫn còn giá trị sử dụng cao.\nGiới thiệu Chào các bạn 👋\nTrong phát triển ứng dụng realtime, Socket.IO là một trong những lựa chọn phổ biến nhất giúp duy trì kết nối hai chiều giữa client và server.\n",
+  "keywords": [
+    
+  ],
+  "articleBody": " ⚠️ Lưu ý: Bài đăng này mang tính tổng hợp kiến thức, luồng kiến trúc và đã không được cập nhật trong 3 năm. Tuy nhiên, tư duy thiết kế realtime system với Socket.IO + Redis vẫn còn giá trị sử dụng cao.\nGiới thiệu Chào các bạn 👋\nTrong phát triển ứng dụng realtime, Socket.IO là một trong những lựa chọn phổ biến nhất giúp duy trì kết nối hai chiều giữa client và server.\nNhờ Socket.IO, chúng ta có thể xây dựng các ứng dụng:\n💬 Chat realtime 🎮 Game online 🔔 Notification 📊 Dashboard realtime Bài viết này tập trung vào:\nHiểu luồng hoạt động của Socket.IO Thiết kế hệ thống chat realtime Mở rộng hệ thống bằng Redis + Load Balancer Socket.IO là gì? Socket.IO là một thư viện hỗ trợ giao tiếp real-time, hai chiều giữa client (trình duyệt) và server thông qua WebSocket (và fallback cơ chế khác).\nKiến trúc cơ bản Client: Kết nối lên server qua Socket.IO client Server: WebSocket server (thường dùng Node.js) Sau khi handshake thành công, client và server có thể trao đổi dữ liệu liên tục.\nTính năng cơ bản của Socket.IO 1. Giao tiếp hai chiều (emit / on) Socket.IO sử dụng hai khái niệm cốt lõi:\nemit → phát sự kiện on → lắng nghe sự kiện 📌 Client và server đều có thể emit \u0026 on\n2. Các kiểu emit trong Socket.IO Giả sử:\nServer là WebSocket Server Socket1, Socket2, Socket3 là các client 🔹 Self Emit Client gửi message → server → trả lại chính client đó\n🔹 Broadcast Emit Client gửi message → server → gửi cho tất cả client khác\n🔹 Room Emit Client gửi message → server → gửi cho các client trong cùng room\n🔹 SocketId Emit (Chat riêng) Server gửi message cho một client cụ thể\n📎 Tài liệu chi tiết:\nhttps://socket.io/docs/v3/broadcasting-events/\nXây dựng mô hình ứng dụng chat 1️⃣ Quy mô nhỏ Với hệ thống ít người dùng:\n1 Web Server 1 WebSocket Server Client kết nối trực tiếp 📌 Mỗi client có một socketId riêng.\n2️⃣ Quy mô trung bình \u0026 lớn Vấn đề:\nServer chịu tải tối đa ~10K user Lượng user tăng → server quá tải → sập 👉 Giải pháp:\nLoad Balancer (Nginx) Redis (Pub/Sub) Load Balancer với Nginx Nginx phân phối request đến nhiều server Node.js theo Round Robin.\nVí dụ:\nr1 → nodejs:8000 r2 → nodejs:8001 r3 → nodejs:8002 Vấn đề khi chỉ dùng Load Balancer ⚠️ Các WebSocket server không giao tiếp được với nhau\n→ Client ở server A không nhận được message từ client ở server B\n👉 Cần Redis hoặc dịch vụ trung gian\nRedis Pub/Sub là gì? Redis không chỉ là Key-Value store mà còn hỗ trợ Publish / Subscribe\nPublish: Đẩy message vào channel Subscribe: Nhận message từ channel 📌 Redis đóng vai trò message broker\nKiến trúc tổng thể Socket.IO + Redis Luồng hoạt động Client connect WebSocket Server WebSocket subscribe Redis channel Redis publish message Tất cả WebSocket server nhận message Emit xuống client tương ứng 📎 Tham khảo: https://socket.io/docs/v3/using-multiple-nodes/\nỨng dụng với Laravel Broadcasting Trong Laravel:\nRedis / Pusher làm broker laravel-echo-server dùng Socket.IO laravel-echo dùng cho client JS 📎 Docs: https://laravel.com/docs/8.x/broadcasting\n📌 Dù Node.js hay PHP, luồng kiến trúc là như nhau\nKết luận Socket.IO giúp xây dựng realtime application hiệu quả Redis Pub/Sub giải quyết bài toán scale nhiều WebSocket server Kiến trúc này phù hợp cho: Chat app Notification system Realtime dashboard 👉 Hiểu luồng kiến trúc quan trọng hơn việc chỉ biết code.\n🚀 Bài tiếp theo gợi ý:\nSo sánh Socket.IO vs WebSocket thuần Redis Streams vs Pub/Sub Realtime system với Kafka ",
+  "wordCount" : "614",
+  "inLanguage": "en",
+  "datePublished": "2024-05-21T10:00:00+07:00",
+  "dateModified": "2024-05-21T10:00:00+07:00",
+  "author":{
+    "@type": "Person",
+    "name": "Đào Quang Hòa"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/posts/bai-7/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Blog Lập Trình Mạng | Đào Quang Hòa",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
 </head>
-<body>
-    <h1>Xử lý Bất đồng bộ trong JavaScript: Từ Callback đến Async/Await</h1>
-    <blockquote>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Blog Lập Trình Mạng | Đào Quang Hòa (Alt + H)">Blog Lập Trình Mạng | Đào Quang Hòa</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/" title="Trang chủ">
+                    <span>Trang chủ</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/posts" title="Blog">
+                    <span>Blog</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about" title="Hồ sơ">
+                    <span>Hồ sơ</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Xử lý Bất đồng bộ trong JavaScript: Từ Callback đến Async/Await
+    </h1>
+    <div class="post-meta"><span title='2024-05-21 10:00:00 +0700 +07'>May 21, 2024</span>&nbsp;·&nbsp;<span>Đào Quang Hòa</span>
+
+</div>
+  </header> 
+  <div class="post-content"><blockquote>
 <p>⚠️ <strong>Lưu ý</strong>: Bài đăng này mang tính tổng hợp kiến thức, luồng kiến trúc và đã không được cập nhật trong 3 năm. Tuy nhiên, <strong>tư duy thiết kế realtime system với Socket.IO + Redis vẫn còn giá trị sử dụng cao</strong>.</p>
 </blockquote>
 <hr>
-<h2 id="giới-thiệu">Giới thiệu</h2>
+<h2 id="giới-thiệu">Giới thiệu<a hidden class="anchor" aria-hidden="true" href="#giới-thiệu">#</a></h2>
 <p>Chào các bạn 👋<br>
 Trong phát triển ứng dụng <strong>realtime</strong>, Socket.IO là một trong những lựa chọn phổ biến nhất giúp duy trì kết nối hai chiều giữa <strong>client</strong> và <strong>server</strong>.</p>
 <p>Nhờ Socket.IO, chúng ta có thể xây dựng các ứng dụng:</p>
@@ -27,18 +232,18 @@ Trong phát triển ứng dụng <strong>realtime</strong>, Socket.IO là một 
 <li>Mở rộng hệ thống bằng <strong>Redis + Load Balancer</strong></li>
 </ul>
 <hr>
-<h2 id="socketio-là-gì">Socket.IO là gì?</h2>
+<h2 id="socketio-là-gì">Socket.IO là gì?<a hidden class="anchor" aria-hidden="true" href="#socketio-là-gì">#</a></h2>
 <p><strong>Socket.IO</strong> là một thư viện hỗ trợ giao tiếp <strong>real-time, hai chiều</strong> giữa client (trình duyệt) và server thông qua WebSocket (và fallback cơ chế khác).</p>
 <p><img alt="Socket.IO Client Server" loading="lazy" src="https://images.viblo.asia/c9b8b962-0a4f-4ef2-b8c2-068c2555ae0d.png"></p>
-<h3 id="kiến-trúc-cơ-bản">Kiến trúc cơ bản</h3>
+<h3 id="kiến-trúc-cơ-bản">Kiến trúc cơ bản<a hidden class="anchor" aria-hidden="true" href="#kiến-trúc-cơ-bản">#</a></h3>
 <ul>
 <li><strong>Client</strong>: Kết nối lên server qua Socket.IO client</li>
 <li><strong>Server</strong>: WebSocket server (thường dùng Node.js)</li>
 </ul>
 <p>Sau khi handshake thành công, client và server có thể <strong>trao đổi dữ liệu liên tục</strong>.</p>
 <hr>
-<h2 id="tính-năng-cơ-bản-của-socketio">Tính năng cơ bản của Socket.IO</h2>
-<h3 id="1-giao-tiếp-hai-chiều-emit--on">1. Giao tiếp hai chiều (emit / on)</h3>
+<h2 id="tính-năng-cơ-bản-của-socketio">Tính năng cơ bản của Socket.IO<a hidden class="anchor" aria-hidden="true" href="#tính-năng-cơ-bản-của-socketio">#</a></h2>
+<h3 id="1-giao-tiếp-hai-chiều-emit--on">1. Giao tiếp hai chiều (emit / on)<a hidden class="anchor" aria-hidden="true" href="#1-giao-tiếp-hai-chiều-emit--on">#</a></h3>
 <p>Socket.IO sử dụng hai khái niệm cốt lõi:</p>
 <ul>
 <li><code>emit</code> → phát sự kiện</li>
@@ -46,32 +251,32 @@ Trong phát triển ứng dụng <strong>realtime</strong>, Socket.IO là một 
 </ul>
 <p>📌 <strong>Client và server đều có thể emit &amp; on</strong></p>
 <hr>
-<h3 id="2-các-kiểu-emit-trong-socketio">2. Các kiểu emit trong Socket.IO</h3>
+<h3 id="2-các-kiểu-emit-trong-socketio">2. Các kiểu emit trong Socket.IO<a hidden class="anchor" aria-hidden="true" href="#2-các-kiểu-emit-trong-socketio">#</a></h3>
 <p>Giả sử:</p>
 <ul>
 <li>Server là WebSocket Server</li>
 <li>Socket1, Socket2, Socket3 là các client</li>
 </ul>
-<h4 id="-self-emit">🔹 Self Emit</h4>
+<h4 id="-self-emit">🔹 Self Emit<a hidden class="anchor" aria-hidden="true" href="#-self-emit">#</a></h4>
 <p>Client gửi message → server → trả lại <strong>chính client đó</strong></p>
 <p><img alt="Self Emit" loading="lazy" src="https://images.viblo.asia/15e63d2d-7c1f-48b2-851a-e35428ad64c5.png"></p>
 <hr>
-<h4 id="-broadcast-emit">🔹 Broadcast Emit</h4>
+<h4 id="-broadcast-emit">🔹 Broadcast Emit<a hidden class="anchor" aria-hidden="true" href="#-broadcast-emit">#</a></h4>
 <p>Client gửi message → server → gửi cho <strong>tất cả client khác</strong></p>
 <p><img alt="Broadcast Emit" loading="lazy" src="https://images.viblo.asia/377c1c84-48fa-4425-81bd-501815540b46.png"></p>
 <hr>
-<h4 id="-room-emit">🔹 Room Emit</h4>
+<h4 id="-room-emit">🔹 Room Emit<a hidden class="anchor" aria-hidden="true" href="#-room-emit">#</a></h4>
 <p>Client gửi message → server → gửi cho <strong>các client trong cùng room</strong></p>
 <p><img alt="Room Emit" loading="lazy" src="https://images.viblo.asia/8f950b7e-7c16-40c4-89b8-abb83f39be98.png"></p>
 <hr>
-<h4 id="-socketid-emit-chat-riêng">🔹 SocketId Emit (Chat riêng)</h4>
+<h4 id="-socketid-emit-chat-riêng">🔹 SocketId Emit (Chat riêng)<a hidden class="anchor" aria-hidden="true" href="#-socketid-emit-chat-riêng">#</a></h4>
 <p>Server gửi message cho <strong>một client cụ thể</strong></p>
 <p><img alt="SocketId Emit" loading="lazy" src="https://images.viblo.asia/48f10b6f-45d6-490c-a9d5-7e3efa23d47f.png"></p>
 <p>📎 Tài liệu chi tiết:<br>
 <a href="https://socket.io/docs/v3/broadcasting-events/">https://socket.io/docs/v3/broadcasting-events/</a></p>
 <hr>
-<h2 id="xây-dựng-mô-hình-ứng-dụng-chat">Xây dựng mô hình ứng dụng chat</h2>
-<h3 id="1-quy-mô-nhỏ">1️⃣ Quy mô nhỏ</h3>
+<h2 id="xây-dựng-mô-hình-ứng-dụng-chat">Xây dựng mô hình ứng dụng chat<a hidden class="anchor" aria-hidden="true" href="#xây-dựng-mô-hình-ứng-dụng-chat">#</a></h2>
+<h3 id="1-quy-mô-nhỏ">1️⃣ Quy mô nhỏ<a hidden class="anchor" aria-hidden="true" href="#1-quy-mô-nhỏ">#</a></h3>
 <p>Với hệ thống ít người dùng:</p>
 <ul>
 <li>1 Web Server</li>
@@ -81,7 +286,7 @@ Trong phát triển ứng dụng <strong>realtime</strong>, Socket.IO là một 
 <p><img alt="Small Scale" loading="lazy" src="https://images.viblo.asia/9431ec3e-602d-4e93-bd53-30fef9a3a5c5.png"></p>
 <p>📌 Mỗi client có một <code>socketId</code> riêng.</p>
 <hr>
-<h3 id="2-quy-mô-trung-bình--lớn">2️⃣ Quy mô trung bình &amp; lớn</h3>
+<h3 id="2-quy-mô-trung-bình--lớn">2️⃣ Quy mô trung bình &amp; lớn<a hidden class="anchor" aria-hidden="true" href="#2-quy-mô-trung-bình--lớn">#</a></h3>
 <p>Vấn đề:</p>
 <ul>
 <li>Server chịu tải tối đa ~10K user</li>
@@ -93,7 +298,7 @@ Trong phát triển ứng dụng <strong>realtime</strong>, Socket.IO là một 
 <li><strong>Redis (Pub/Sub)</strong></li>
 </ul>
 <hr>
-<h2 id="load-balancer-với-nginx">Load Balancer với Nginx</h2>
+<h2 id="load-balancer-với-nginx">Load Balancer với Nginx<a hidden class="anchor" aria-hidden="true" href="#load-balancer-với-nginx">#</a></h2>
 <p>Nginx phân phối request đến nhiều server Node.js theo <strong>Round Robin</strong>.</p>
 <p><img alt="Nginx Load Balance" loading="lazy" src="https://images.viblo.asia/4fed4584-ea7e-4e36-b6a4-fa06950d5ce8.png"></p>
 <p>Ví dụ:</p>
@@ -103,13 +308,13 @@ Trong phát triển ứng dụng <strong>realtime</strong>, Socket.IO là một 
 <li>r3 → nodejs:8002</li>
 </ul>
 <hr>
-<h2 id="vấn-đề-khi-chỉ-dùng-load-balancer">Vấn đề khi chỉ dùng Load Balancer</h2>
+<h2 id="vấn-đề-khi-chỉ-dùng-load-balancer">Vấn đề khi chỉ dùng Load Balancer<a hidden class="anchor" aria-hidden="true" href="#vấn-đề-khi-chỉ-dùng-load-balancer">#</a></h2>
 <p><img alt="Problem Without Redis" loading="lazy" src="https://images.viblo.asia/7da08c2f-92b1-415c-8119-14813a8c2b34.png"></p>
 <p>⚠️ Các WebSocket server <strong>không giao tiếp được với nhau</strong><br>
 → Client ở server A không nhận được message từ client ở server B</p>
 <p>👉 <strong>Cần Redis hoặc dịch vụ trung gian</strong></p>
 <hr>
-<h2 id="redis-pubsub-là-gì">Redis Pub/Sub là gì?</h2>
+<h2 id="redis-pubsub-là-gì">Redis Pub/Sub là gì?<a hidden class="anchor" aria-hidden="true" href="#redis-pubsub-là-gì">#</a></h2>
 <p>Redis không chỉ là Key-Value store mà còn hỗ trợ <strong>Publish / Subscribe</strong></p>
 <ul>
 <li><strong>Publish</strong>: Đẩy message vào channel</li>
@@ -118,9 +323,9 @@ Trong phát triển ứng dụng <strong>realtime</strong>, Socket.IO là một 
 <p><img alt="Redis Pub Sub" loading="lazy" src="https://images.viblo.asia/67c87ce0-e68e-431c-a71a-8f57bdfbb3da.png"></p>
 <p>📌 Redis đóng vai trò <strong>message broker</strong></p>
 <hr>
-<h2 id="kiến-trúc-tổng-thể-socketio--redis">Kiến trúc tổng thể Socket.IO + Redis</h2>
+<h2 id="kiến-trúc-tổng-thể-socketio--redis">Kiến trúc tổng thể Socket.IO + Redis<a hidden class="anchor" aria-hidden="true" href="#kiến-trúc-tổng-thể-socketio--redis">#</a></h2>
 <p><img alt="Total Architecture" loading="lazy" src="https://images.viblo.asia/c16ce001-ebe6-4529-bf24-901410543261.png"></p>
-<h3 id="luồng-hoạt-động">Luồng hoạt động</h3>
+<h3 id="luồng-hoạt-động">Luồng hoạt động<a hidden class="anchor" aria-hidden="true" href="#luồng-hoạt-động">#</a></h3>
 <ol>
 <li>Client connect WebSocket</li>
 <li>Server WebSocket subscribe Redis channel</li>
@@ -131,7 +336,7 @@ Trong phát triển ứng dụng <strong>realtime</strong>, Socket.IO là một 
 <p>📎 Tham khảo:
 <a href="https://socket.io/docs/v3/using-multiple-nodes/">https://socket.io/docs/v3/using-multiple-nodes/</a></p>
 <hr>
-<h2 id="ứng-dụng-với-laravel-broadcasting">Ứng dụng với Laravel Broadcasting</h2>
+<h2 id="ứng-dụng-với-laravel-broadcasting">Ứng dụng với Laravel Broadcasting<a hidden class="anchor" aria-hidden="true" href="#ứng-dụng-với-laravel-broadcasting">#</a></h2>
 <p>Trong Laravel:</p>
 <ul>
 <li>Redis / Pusher làm broker</li>
@@ -142,7 +347,7 @@ Trong phát triển ứng dụng <strong>realtime</strong>, Socket.IO là một 
 <a href="https://laravel.com/docs/8.x/broadcasting">https://laravel.com/docs/8.x/broadcasting</a></p>
 <p>📌 Dù Node.js hay PHP, <strong>luồng kiến trúc là như nhau</strong></p>
 <hr>
-<h2 id="kết-luận">Kết luận</h2>
+<h2 id="kết-luận">Kết luận<a hidden class="anchor" aria-hidden="true" href="#kết-luận">#</a></h2>
 <ul>
 <li>Socket.IO giúp xây dựng realtime application hiệu quả</li>
 <li>Redis Pub/Sub giải quyết bài toán <strong>scale nhiều WebSocket server</strong></li>
@@ -163,5 +368,91 @@ Trong phát triển ứng dụng <strong>realtime</strong>, Socket.IO là một 
 <li>Realtime system với Kafka</li>
 </ul>
 
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="http://localhost:1313/">Blog Lập Trình Mạng | Đào Quang Hòa</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
 </body>
+
 </html>
