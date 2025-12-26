@@ -1,8 +1,11 @@
-baseURL = "https://quanghoa24.github.io/"
+baseURL = "https://quanghoa24.github.io/my-blog/"
 languageCode = "vi-vn"
 title = "Blog Lập Trình Mạng | Đào Quang Hòa"
 
 theme = "PaperMod"
+
+[outputs]
+home = ["HTML", "RSS"]
 
 [params]
     env = "production"
