@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Sơ yếu lý lịch - Đào Quang Hòa on Blog Lập Trình Mạng | Đào Quang Hòa</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content in Sơ yếu lý lịch - Đào Quang Hòa on Blog Lập Trình Mạng | Đào Quang Hòa</description>
+    <generator>Hugo -- 0.153.2</generator>
+    <language>vi-vn</language>
+    <lastBuildDate>Fri, 26 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Fetch API và Giao thức HTTP/HTTPS hiện đại</title>
+      <link>http://localhost:1313/posts/bai-6/</link>
+      <pubDate>Fri, 26 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/bai-6/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Fetch API&lt;/strong&gt; cung cấp một giao diện JavaScript hiện đại để truy cập và thao tác với các thành phần của đường ống HTTP, như yêu cầu (Request) và phản hồi (Response). Thay thế cho &lt;code&gt;XMLHttpRequest&lt;/code&gt; cổ điển, Fetch sử dụng cấu trúc Promise một cách triệt để.&lt;/p&gt;
+&lt;p&gt;Về mặt học thuật, việc hiểu rõ các phương thức (GET, POST, PUT, DELETE) và mã trạng thái (Status Codes) là nền tảng để xây dựng các ứng dụng Web tương tác hiệu quả với các dịch vụ từ xa.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Giao thức TCP và Cơ chế Truyền tải Tin cậy trong Java</title>
+      <link>http://localhost:1313/posts/bai-2/</link>
+      <pubDate>Fri, 26 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/bai-2/</guid>
+      <description>&lt;p&gt;Giao thức &lt;strong&gt;Transmission Control Protocol (TCP)&lt;/strong&gt; đảm bảo tính toàn vẹn dữ liệu thông qua cơ chế bắt tay ba bước (Three-way Handshake) và kiểm soát luồng (Flow Control). Trong ngôn ngữ Java, lớp &lt;code&gt;ServerSocket&lt;/code&gt; và &lt;code&gt;Socket&lt;/code&gt; cung cấp các luồng vào/ra (InputStream/OutputStream) để thực thi việc truyền tin hướng kết nối.&lt;/p&gt;
+&lt;p&gt;Điểm cốt lõi trong lập trình TCP Java là việc quản lý ngoại lệ (Exception Handling) và đóng tài nguyên hệ thống sau khi phiên làm việc (Session) kết thúc để tránh hiện tượng rò rỉ bộ nhớ.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hồ sơ năng lực &amp; Tiểu sử khoa học</title>
+      <link>http://localhost:1313/about/</link>
+      <pubDate>Fri, 26 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/about/</guid>
+      <description>&lt;h1 id=&#34;-đào-quang-hòa&#34;&gt;👨‍💻 ĐÀO QUANG HÒA&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Sinh viên Công nghệ thông tin | Chuyên sâu Java &amp;amp; JavaScript Network&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;-mục-tiêu-nghề-nghiệp&#34;&gt;🎯 Mục tiêu nghề nghiệp&lt;/h2&gt;
+&lt;p&gt;Trở thành một Kỹ sư hệ thống (System Engineer) chuyên sâu về mảng lập trình mạng và hệ thống phân tán. Tôi khao khát ứng dụng các kiến thức về Socket, đa luồng và các giao thức truyền tải để xây dựng những giải pháp kết nối hiệu quả, ổn định và bảo mật cho doanh nghiệp.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Khái niệm Socket &amp; Kiến trúc Client-Server: Nền tảng Giao tiếp Mạng</title>
+      <link>http://localhost:1313/posts/bai-1/</link>
+      <pubDate>Fri, 26 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/bai-1/</guid>
+      <description>&lt;p&gt;Trong bối cảnh hệ thống phân tán, &lt;strong&gt;Socket&lt;/strong&gt; đóng vai trò là một trừu tượng hóa phần mềm (Software Abstraction), tạo thành một điểm cuối (Endpoint) cho giao diện lập trình ứng dụng (API) giữa các tiến trình giao tiếp. Một Socket được định danh bởi bộ ngũ (5-tuple) bao gồm: giao thức, địa chỉ IP nguồn/đích và số hiệu cổng (Port) nguồn/đích.&lt;/p&gt;
+&lt;p&gt;Kiến trúc &lt;strong&gt;Client-Server&lt;/strong&gt; thiết lập một mô hình bất đối xứng:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Kiến trúc RESTful API và Định dạng Trao đổi Dữ liệu JSON</title>
+      <link>http://localhost:1313/posts/bai-8/</link>
+      <pubDate>Fri, 26 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/bai-8/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Representational State Transfer (REST)&lt;/strong&gt; là một phong cách kiến trúc phần mềm định nghĩa các ràng buộc cho việc tạo ra các dịch vụ Web. Dữ liệu thường được trao đổi dưới định dạng &lt;strong&gt;JSON (JavaScript Object Notation)&lt;/strong&gt; nhờ tính nhẹ (Lightweight) và khả năng tương thích cao giữa các ngôn ngữ lập trình khác nhau.&lt;/p&gt;
+&lt;p&gt;Một hệ thống REST chuẩn mực phải tuân thủ tính phi trạng thái (Statelessness), nghĩa là mọi yêu cầu từ Client phải chứa đầy đủ thông tin cần thiết để Server hiểu và xử lý.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Phân tích So sánh: Java (Backend) vs JavaScript (Real-time)</title>
+      <link>http://localhost:1313/posts/bai-9/</link>
+      <pubDate>Fri, 26 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/bai-9/</guid>
+      <description>&lt;p&gt;Tổng kết lại, việc lựa chọn công nghệ phụ thuộc vào bài toán cụ thể:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Java:&lt;/strong&gt; Ưu thế trong các hệ thống doanh nghiệp lớn (Enterprise), đòi hỏi tính bảo mật cao, đa luồng mạnh mẽ và quản lý kiểu dữ liệu chặt chẽ (Strongly typed).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;JavaScript (Node.js):&lt;/strong&gt; Phù hợp với các ứng dụng I/O intensive, đòi hỏi tốc độ phát triển nhanh và khả năng xử lý hàng ngàn kết nối đồng thời với mức tiêu thụ tài nguyên thấp.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Sự kết hợp giữa Java Backend và JavaScript Frontend tạo nên một hệ sinh thái mạng toàn diện và ổn định.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Tối ưu hóa Server Đa luồng với mô hình Thread Pool</title>
+      <link>http://localhost:1313/posts/bai-4/</link>
+      <pubDate>Fri, 26 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/bai-4/</guid>
+      <description>&lt;p&gt;Một máy chủ (Server) đơn luồng chỉ có thể xử lý một yêu cầu tại một thời điểm, gây ra hiện tượng thắt nút cổ chai. Giải pháp học thuật là áp dụng mô hình &lt;strong&gt;Multi-threading&lt;/strong&gt;. Bằng cách sử dụng &lt;code&gt;ExecutorService&lt;/code&gt; trong Java, chúng ta tạo ra một tập hợp các luồng có sẵn (Thread Pool) để phục vụ đồng thời nhiều Client.&lt;/p&gt;
+&lt;p&gt;Phương pháp này giúp giảm chi phí tài nguyên khi tạo mới và hủy luồng liên tục, đồng thời tăng khả năng chịu tải (Scalability) của hệ thống.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>UDP Socket: Phân tích Hiệu năng và Ứng dụng Thời gian thực</title>
+      <link>http://localhost:1313/posts/bai-3/</link>
+      <pubDate>Fri, 26 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/bai-3/</guid>
+      <description>&lt;p&gt;Ngược lại với TCP, &lt;strong&gt;User Datagram Protocol (UDP)&lt;/strong&gt; là giao thức phi kết nối (Connectionless), ưu tiên tối thiểu hóa độ trễ (Latency) thay vì đảm bảo thứ tự gói tin. Sử dụng &lt;code&gt;DatagramSocket&lt;/code&gt; và &lt;code&gt;DatagramPacket&lt;/code&gt; trong Java cho phép lập trình viên đóng gói dữ liệu vào các đơn vị độc lập.&lt;/p&gt;
+&lt;p&gt;Cơ chế này đặc biệt tối ưu cho các hệ thống Real-time như truyền phát video (Streaming) hoặc VoIP, nơi việc mất mát một tỉ lệ nhỏ dữ liệu có thể chấp nhận được để duy trì tính liên tục của dòng dữ liệu.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>WebSocket và Socket.io: Giải pháp Giao tiếp Song công Toàn phần</title>
+      <link>http://localhost:1313/posts/bai-7/</link>
+      <pubDate>Fri, 26 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/bai-7/</guid>
+      <description>&lt;p&gt;Giao thức &lt;strong&gt;WebSocket&lt;/strong&gt; thiết lập một kênh giao tiếp song công (Full-duplex) trên một kết nối TCP duy nhất, cho phép Server chủ động đẩy dữ liệu về phía Client (Server-Sent Events). &lt;strong&gt;Socket.io&lt;/strong&gt; là một thư viện bậc cao cung cấp các tính năng bổ sung như tự động kết nối lại (Auto-reconnect) và phát tin quảng bá (Broadcasting).&lt;/p&gt;
+&lt;p&gt;Đây là công nghệ cốt lõi cho các hệ thống Chat trực tuyến và các bảng điều khiển tài chính yêu cầu cập nhật dữ liệu liên tục theo mili giây.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Xử lý Bất đồng bộ trong JavaScript: Từ Callback đến Async/Await</title>
+      <link>http://localhost:1313/posts/bai-5/</link>
+      <pubDate>Fri, 26 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/bai-5/</guid>
+      <description>&lt;p&gt;Trong môi trường thực thi đơn luồng (Single-threaded) của JavaScript, cơ chế &lt;strong&gt;Asynchronous&lt;/strong&gt; là yếu tố sống còn để ngăn chặn việc chặn luồng chính (Main Thread). Mô hình Event Loop cho phép các tác vụ I/O mạng chạy song song.&lt;/p&gt;
+&lt;p&gt;Việc chuyển đổi từ Callback Hell sang &lt;code&gt;Promises&lt;/code&gt; và cuối cùng là cú pháp &lt;code&gt;Async/Await&lt;/code&gt; giúp mã nguồn trở nên tuần tự, dễ bảo trì nhưng vẫn duy trì được hiệu suất cao của các tác vụ không đồng bộ.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

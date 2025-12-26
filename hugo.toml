@@ -1,0 +1,39 @@
+baseURL = 'http://localhost:1313/'
+languageCode = 'vi-vn'
+title = 'Blog Lập Trình Mạng | Đào Quang Hòa'
+theme = "PaperMod"
+
+[params]
+    env = "production"
+    description = "Blog chia sẻ kiến thức lập trình mạng Java và JavaScript"
+    author = "Đào Quang Hòa"
+
+    # Cấu hình trang chủ Profile
+    [params.profileMode]
+        enabled = true
+        title = "Đào Quang Hòa"
+        subtitle = "Sinh viên CNTT | Chuyên sâu Java & JavaScript Network"
+        imageUrl = "images/avatar.jpg"
+        imageWidth = 150
+        imageHeight = 150
+        
+        [[params.profileMode.buttons]]
+            name = "📖 Khám phá Blog"
+            url = "/posts"
+        [[params.profileMode.buttons]]
+            name = "👨‍💻 Hồ sơ cá nhân"
+            url = "/about"
+
+# Menu điều hướng góc trên bên phải
+[[menu.main]]
+    name = "Trang chủ"
+    url = "/"
+    weight = 10
+[[menu.main]]
+    name = "Blog"
+    url = "/posts"
+    weight = 20
+[[menu.main]]
+    name = "Hồ sơ"
+    url = "/about"
+    weight = 30

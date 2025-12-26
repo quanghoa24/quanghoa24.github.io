@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Posts | Blog Lập Trình Mạng | Đào Quang Hòa</title>
+<meta name="keywords" content="">
+<meta name="description" content="Posts - Blog Lập Trình Mạng | Đào Quang Hòa">
+<meta name="author" content="Đào Quang Hòa">
+<link rel="canonical" href="http://localhost:1313/posts/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fd5566c526ae48aadabd950798a2dc3568536401560eae5caac3765a42a9e7b5.css" integrity="sha256-/VVmxSauSKravZUHmKLcNWhTZAFWDq5cqsN2WkKp57U=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/posts/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="http://localhost:1313/posts/">
+  <meta property="og:site_name" content="Blog Lập Trình Mạng | Đào Quang Hòa">
+  <meta property="og:title" content="Posts">
+  <meta property="og:description" content="Blog chia sẻ kiến thức lập trình mạng Java và JavaScript">
+  <meta property="og:locale" content="vi-vn">
+  <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Posts">
+<meta name="twitter:description" content="Blog chia sẻ kiến thức lập trình mạng Java và JavaScript">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://localhost:1313/posts/"
+    }
+  ]
+}
+</script>
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Blog Lập Trình Mạng | Đào Quang Hòa (Alt + H)">Blog Lập Trình Mạng | Đào Quang Hòa</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/" title="Trang chủ">
+                    <span>Trang chủ</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/posts" title="Blog">
+                    <span class="active">Blog</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about" title="Hồ sơ">
+                    <span>Hồ sơ</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header">
+  <h1>
+    Posts
+  </h1>
+</header>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Fetch API và Giao thức HTTP/HTTPS hiện đại
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Fetch API cung cấp một giao diện JavaScript hiện đại để truy cập và thao tác với các thành phần của đường ống HTTP, như yêu cầu (Request) và phản hồi (Response). Thay thế cho XMLHttpRequest cổ điển, Fetch sử dụng cấu trúc Promise một cách triệt để.
+Về mặt học thuật, việc hiểu rõ các phương thức (GET, POST, PUT, DELETE) và mã trạng thái (Status Codes) là nền tảng để xây dựng các ứng dụng Web tương tác hiệu quả với các dịch vụ từ xa.
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-12-26 00:00:00 +0000 UTC'>December 26, 2025</span>&nbsp;·&nbsp;<span>Đào Quang Hòa</span></footer>
+  <a class="entry-link" aria-label="post link to Fetch API và Giao thức HTTP/HTTPS hiện đại" href="http://localhost:1313/posts/bai-6/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Giao thức TCP và Cơ chế Truyền tải Tin cậy trong Java
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Giao thức Transmission Control Protocol (TCP) đảm bảo tính toàn vẹn dữ liệu thông qua cơ chế bắt tay ba bước (Three-way Handshake) và kiểm soát luồng (Flow Control). Trong ngôn ngữ Java, lớp ServerSocket và Socket cung cấp các luồng vào/ra (InputStream/OutputStream) để thực thi việc truyền tin hướng kết nối.
+Điểm cốt lõi trong lập trình TCP Java là việc quản lý ngoại lệ (Exception Handling) và đóng tài nguyên hệ thống sau khi phiên làm việc (Session) kết thúc để tránh hiện tượng rò rỉ bộ nhớ.
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-12-26 00:00:00 +0000 UTC'>December 26, 2025</span>&nbsp;·&nbsp;<span>Đào Quang Hòa</span></footer>
+  <a class="entry-link" aria-label="post link to Giao thức TCP và Cơ chế Truyền tải Tin cậy trong Java" href="http://localhost:1313/posts/bai-2/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Khái niệm Socket &amp; Kiến trúc Client-Server: Nền tảng Giao tiếp Mạng
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Trong bối cảnh hệ thống phân tán, Socket đóng vai trò là một trừu tượng hóa phần mềm (Software Abstraction), tạo thành một điểm cuối (Endpoint) cho giao diện lập trình ứng dụng (API) giữa các tiến trình giao tiếp. Một Socket được định danh bởi bộ ngũ (5-tuple) bao gồm: giao thức, địa chỉ IP nguồn/đích và số hiệu cổng (Port) nguồn/đích.
+Kiến trúc Client-Server thiết lập một mô hình bất đối xứng:
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-12-26 00:00:00 +0000 UTC'>December 26, 2025</span>&nbsp;·&nbsp;<span>Đào Quang Hòa</span></footer>
+  <a class="entry-link" aria-label="post link to Khái niệm Socket & Kiến trúc Client-Server: Nền tảng Giao tiếp Mạng" href="http://localhost:1313/posts/bai-1/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Kiến trúc RESTful API và Định dạng Trao đổi Dữ liệu JSON
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Representational State Transfer (REST) là một phong cách kiến trúc phần mềm định nghĩa các ràng buộc cho việc tạo ra các dịch vụ Web. Dữ liệu thường được trao đổi dưới định dạng JSON (JavaScript Object Notation) nhờ tính nhẹ (Lightweight) và khả năng tương thích cao giữa các ngôn ngữ lập trình khác nhau.
+Một hệ thống REST chuẩn mực phải tuân thủ tính phi trạng thái (Statelessness), nghĩa là mọi yêu cầu từ Client phải chứa đầy đủ thông tin cần thiết để Server hiểu và xử lý.
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-12-26 00:00:00 +0000 UTC'>December 26, 2025</span>&nbsp;·&nbsp;<span>Đào Quang Hòa</span></footer>
+  <a class="entry-link" aria-label="post link to Kiến trúc RESTful API và Định dạng Trao đổi Dữ liệu JSON" href="http://localhost:1313/posts/bai-8/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Phân tích So sánh: Java (Backend) vs JavaScript (Real-time)
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Tổng kết lại, việc lựa chọn công nghệ phụ thuộc vào bài toán cụ thể:
+Java: Ưu thế trong các hệ thống doanh nghiệp lớn (Enterprise), đòi hỏi tính bảo mật cao, đa luồng mạnh mẽ và quản lý kiểu dữ liệu chặt chẽ (Strongly typed). JavaScript (Node.js): Phù hợp với các ứng dụng I/O intensive, đòi hỏi tốc độ phát triển nhanh và khả năng xử lý hàng ngàn kết nối đồng thời với mức tiêu thụ tài nguyên thấp. Sự kết hợp giữa Java Backend và JavaScript Frontend tạo nên một hệ sinh thái mạng toàn diện và ổn định.
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-12-26 00:00:00 +0000 UTC'>December 26, 2025</span>&nbsp;·&nbsp;<span>Đào Quang Hòa</span></footer>
+  <a class="entry-link" aria-label="post link to Phân tích So sánh: Java (Backend) vs JavaScript (Real-time)" href="http://localhost:1313/posts/bai-9/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Tối ưu hóa Server Đa luồng với mô hình Thread Pool
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Một máy chủ (Server) đơn luồng chỉ có thể xử lý một yêu cầu tại một thời điểm, gây ra hiện tượng thắt nút cổ chai. Giải pháp học thuật là áp dụng mô hình Multi-threading. Bằng cách sử dụng ExecutorService trong Java, chúng ta tạo ra một tập hợp các luồng có sẵn (Thread Pool) để phục vụ đồng thời nhiều Client.
+Phương pháp này giúp giảm chi phí tài nguyên khi tạo mới và hủy luồng liên tục, đồng thời tăng khả năng chịu tải (Scalability) của hệ thống.
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-12-26 00:00:00 +0000 UTC'>December 26, 2025</span>&nbsp;·&nbsp;<span>Đào Quang Hòa</span></footer>
+  <a class="entry-link" aria-label="post link to Tối ưu hóa Server Đa luồng với mô hình Thread Pool" href="http://localhost:1313/posts/bai-4/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">UDP Socket: Phân tích Hiệu năng và Ứng dụng Thời gian thực
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Ngược lại với TCP, User Datagram Protocol (UDP) là giao thức phi kết nối (Connectionless), ưu tiên tối thiểu hóa độ trễ (Latency) thay vì đảm bảo thứ tự gói tin. Sử dụng DatagramSocket và DatagramPacket trong Java cho phép lập trình viên đóng gói dữ liệu vào các đơn vị độc lập.
+Cơ chế này đặc biệt tối ưu cho các hệ thống Real-time như truyền phát video (Streaming) hoặc VoIP, nơi việc mất mát một tỉ lệ nhỏ dữ liệu có thể chấp nhận được để duy trì tính liên tục của dòng dữ liệu.
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-12-26 00:00:00 +0000 UTC'>December 26, 2025</span>&nbsp;·&nbsp;<span>Đào Quang Hòa</span></footer>
+  <a class="entry-link" aria-label="post link to UDP Socket: Phân tích Hiệu năng và Ứng dụng Thời gian thực" href="http://localhost:1313/posts/bai-3/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">WebSocket và Socket.io: Giải pháp Giao tiếp Song công Toàn phần
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Giao thức WebSocket thiết lập một kênh giao tiếp song công (Full-duplex) trên một kết nối TCP duy nhất, cho phép Server chủ động đẩy dữ liệu về phía Client (Server-Sent Events). Socket.io là một thư viện bậc cao cung cấp các tính năng bổ sung như tự động kết nối lại (Auto-reconnect) và phát tin quảng bá (Broadcasting).
+Đây là công nghệ cốt lõi cho các hệ thống Chat trực tuyến và các bảng điều khiển tài chính yêu cầu cập nhật dữ liệu liên tục theo mili giây.
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-12-26 00:00:00 +0000 UTC'>December 26, 2025</span>&nbsp;·&nbsp;<span>Đào Quang Hòa</span></footer>
+  <a class="entry-link" aria-label="post link to WebSocket và Socket.io: Giải pháp Giao tiếp Song công Toàn phần" href="http://localhost:1313/posts/bai-7/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Xử lý Bất đồng bộ trong JavaScript: Từ Callback đến Async/Await
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Trong môi trường thực thi đơn luồng (Single-threaded) của JavaScript, cơ chế Asynchronous là yếu tố sống còn để ngăn chặn việc chặn luồng chính (Main Thread). Mô hình Event Loop cho phép các tác vụ I/O mạng chạy song song.
+Việc chuyển đổi từ Callback Hell sang Promises và cuối cùng là cú pháp Async/Await giúp mã nguồn trở nên tuần tự, dễ bảo trì nhưng vẫn duy trì được hiệu suất cao của các tác vụ không đồng bộ.
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-12-26 00:00:00 +0000 UTC'>December 26, 2025</span>&nbsp;·&nbsp;<span>Đào Quang Hòa</span></footer>
+  <a class="entry-link" aria-label="post link to Xử lý Bất đồng bộ trong JavaScript: Từ Callback đến Async/Await" href="http://localhost:1313/posts/bai-5/"></a>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="http://localhost:1313/">Blog Lập Trình Mạng | Đào Quang Hòa</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
