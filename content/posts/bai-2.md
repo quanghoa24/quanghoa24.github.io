@@ -1,9 +1,47 @@
 ---
-title: "Giao thức TCP và Cơ chế Truyền tải Tin cậy trong Java"
+title: "Giao Thức TCP Là Gì? TCP Hoạt Động Như Thế Nào?"
 date: 2025-12-26
 draft: false
 ---
 
-Giao thức **Transmission Control Protocol (TCP)** đảm bảo tính toàn vẹn dữ liệu thông qua cơ chế bắt tay ba bước (Three-way Handshake) và kiểm soát luồng (Flow Control). Trong ngôn ngữ Java, lớp `ServerSocket` và `Socket` cung cấp các luồng vào/ra (InputStream/OutputStream) để thực thi việc truyền tin hướng kết nối.
+Bài viết này sẽ giới thiệu về giao thức TCP. Nếu bạn cần hỗ trợ, xin vui lòng liên hệ VinaHost qua Hotline 1900 6046 ext.3, email về support@vinahost.vn hoặc chat với VinaHost qua livechat https://livechat.vinahost.vn/chat.php.
 
-Điểm cốt lõi trong lập trình TCP Java là việc quản lý ngoại lệ (Exception Handling) và đóng tài nguyên hệ thống sau khi phiên làm việc (Session) kết thúc để tránh hiện tượng rò rỉ bộ nhớ.
+Giao thức TCP là gì?
+Transmission Control Protocol (TCP) là giao thức tiêu chuẩn trên Internet đảm bảo trao đổi thành công các gói dữ liệu giữa các thiết bị qua mạng. TCP là giao thức truyền tải cơ bản cho nhiều loại ứng dụng, bao gồm máy chủ web và trang web, ứng dụng email, FTP và các ứng dụng ngang hàng.
+
+TCP hoạt động với giao thức Internet (IP) để chỉ định cách dữ liệu được trao đổi trực tuyến. IP chịu trách nhiệm gửi từng gói đến đích của nó, trong khi TCP đảm bảo rằng các byte được truyền theo thứ tự mà chúng được gửi mà không có lỗi hoặc thiếu sót nào. Hai giao thức kết hợp với nhau được gọi là TCP/IP.
+
+TCP hoạt động như thế nào?
+TCP hoạt động theo tiến trình bắt tay 3 bước (3 way handshake). Tiến trình này hoạt động như sau:
+
+image: "https://blog.vinahost.vn/wp-content/uploads/2021/11/giao-thuc-tcp-la-gi-1.png"
+
+Máy khách gửi cho máy chủ một gói SYN — một yêu cầu kết nối từ port nguồn của nó đến port đích đến của máy chủ.
+Máy chủ phản hồi bằng gói SYN/ACK, xác nhận việc nhận được yêu cầu kết nối.
+Máy khách nhận gói SYN/ACK và trả lời bằng gói ACK của chính nó.
+
+Sau khi kết nối được thiết lập, TCP hoạt động bằng cách chia nhỏ dữ liệu đã truyền thành các segment (phân đoạn), mỗi segment được đóng gói thành một gói dữ liệu và được gửi đến đích của nó.
+
+Cấu trúc của TCP Header
+Source port (16 bit): Số cổng của thiết bị gửi.
+Destination port (16 bit): Số cổng của thiết bị nhận.
+Sequence number (32 bit): Dùng để đánh số thứ tự gói tin ( từ số sequense nó sẽ tính ra được số byte đã được truyền)
+Acknowledgment number (32 bit): Dùng để báo đã nhận được gói tin nào và mong nhận được byte mang số thứ tự nào tiếp theo.
+DO (4 bit): Cho biết toàn bộ header dài bao nhiêu tính theo đơn vị word (1 Word = 4 byte).
+RSV (4 bit): Đều được thiết lập bằng 0.
+Flags (9 bit): Được sử dụng để thiết lập kết nối, gửi dữ liệu và chấm dứt kêt nối.
+URG: Ưu tiên dữ liệu này hơn các dữ liệu khác.
+ACK: Được sử dụng để xác nhận.
+PSH: Segment yêu cầu chức năng push.
+RST: Thiết lập lại kết nối.
+SYN: Được sử dụng để đặt số thứ tự ban đầu.
+FIN: Kết thúc kết nối TCP.
+Windows (16 bit): Số lượng byte được thiết bị sẵn sàng tiếp nhận.
+Checksum (16 bit): Kiểm tra lỗi của toàn bộ TCP segment.
+Urgent pointer (16 bit): Sử dụng trong trường hợp cần ưu tiên dữ liệu.
+Options (tối đa 32 bit): Cho phép thêm vào TCP các tính năng khác.
+Để xem các trường này hoạt động, các bạn có thể sử dụng công cụ Wireshard.
+
+image: "https://blog.vinahost.vn/wp-content/uploads/2021/11/giao-thuc-tcp-la-gi-3.png"
+
+Chúc anh em thành công!
