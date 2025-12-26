@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <title>UDP là gì? Các ứng dụng và tính năng phổ biến của UDP</title>
+</head>
+<body>
+    <h1>UDP là gì? Các ứng dụng và tính năng phổ biến của UDP</h1>
+    <h2 id="udp-là-gì-các-ứng-dụng-và-tính-năng-phổ-biến-của-udp">UDP là gì? Các ứng dụng và tính năng phổ biến của UDP</h2>
+<p><img alt="So sánh UDP và TCP" loading="lazy" src="https://techvccloud.mediacdn.vn/zoom/300_180/2018/10/29/network-820x400-1540786451816836087982-0-54-400-766-crop-15407864618331512335928.jpg"></p>
+<p><strong>UDP (User Datagram Protocol)</strong> là một trong những giao thức quan trọng và phổ biến trong truyền thông mạng. Nhờ UDP, chúng ta có thể xem video trực tuyến, thực hiện các cuộc gọi video và chơi nhiều trò chơi trực tuyến yêu cầu phản hồi nhanh.</p>
+<p>Trong bài viết này, chúng ta sẽ cùng tìm hiểu những kiến thức cơ bản về UDP, cách thức hoạt động, ưu – nhược điểm và các ứng dụng phổ biến của giao thức này.</p>
+<hr>
+<h2 id="udp-là-gì">UDP là gì?</h2>
+<p><img alt="UDP trong mạng máy tính" loading="lazy" src="https://techvccloud.mediacdn.vn/2018/10/29/photo-1-15407867428681647494037.jpeg"></p>
+<p><strong>UDP (User Datagram Protocol)</strong> – Giao thức dữ liệu người dùng – là một giao thức truyền tải hoạt động ở <strong>lớp vận chuyển (Layer 4)</strong> của mô hình OSI. UDP thường được xem là giao thức thay thế cho <strong>TCP (Transmission Control Protocol)</strong> trong các trường hợp yêu cầu <strong>độ trễ thấp</strong> và <strong>tốc độ cao</strong>.</p>
+<ul>
+<li><strong>TCP</strong>: Hướng kết nối, đáng tin cậy</li>
+<li><strong>UDP</strong>: Không kết nối, truyền dữ liệu nhanh</li>
+</ul>
+<p>UDP gửi dữ liệu dưới dạng các <strong>datagram</strong>, mỗi gói độc lập và không phụ thuộc vào gói khác.</p>
+<hr>
+<h2 id="cách-thức-hoạt-động-của-udp">Cách thức hoạt động của UDP</h2>
+<p><img alt="Quá trình truyền dữ liệu UDP" loading="lazy" src="https://techvccloud.mediacdn.vn/2018/10/29/photo-1-1540786379934401840946.jpg"></p>
+<p>UDP truyền dữ liệu <strong>không cần thiết lập kết nối trước</strong> giữa bên gửi và bên nhận:</p>
+<ol>
+<li>Đóng gói dữ liệu thành datagram</li>
+<li>Gửi trực tiếp đến IP và port đích</li>
+<li>Máy nhận chuyển dữ liệu cho ứng dụng tương ứng</li>
+</ol>
+<p>UDP <strong>không đảm bảo</strong>:</p>
+<ul>
+<li>Thứ tự gói tin</li>
+<li>Gói tin có đến nơi hay không</li>
+<li>Truyền lại khi mất gói</li>
+</ul>
+<hr>
+<h2 id="ưu-và-nhược-điểm-của-udp">Ưu và nhược điểm của UDP</h2>
+<h3 id="-ưu-điểm">✅ Ưu điểm</h3>
+<ul>
+<li>Tốc độ cao, độ trễ thấp</li>
+<li>Tiết kiệm tài nguyên</li>
+<li>Hỗ trợ multicast &amp; broadcast</li>
+<li>Phù hợp hệ thống thời gian thực</li>
+</ul>
+<h3 id="-nhược-điểm">❌ Nhược điểm</h3>
+<ul>
+<li>Không đảm bảo độ tin cậy</li>
+<li>Không kiểm soát luồng</li>
+<li>Dữ liệu có thể mất hoặc sai thứ tự</li>
+</ul>
+<hr>
+<h2 id="các-ứng-dụng-của-udp">Các ứng dụng của UDP</h2>
+<p><img alt="Ứng dụng UDP trong thực tế" loading="lazy" src="https://techvccloud.mediacdn.vn/2018/10/29/photo-1-15407867466671864268855.gif"></p>
+<p>UDP thường được dùng trong các hệ thống <strong>ưu tiên tốc độ hơn độ chính xác tuyệt đối</strong>:</p>
+<ul>
+<li>🎮 Game online</li>
+<li>📹 Streaming video / audio</li>
+<li>📡 VoIP</li>
+<li>🌐 DNS, DHCP, SNMP</li>
+<li>📊 IoT, cảm biến</li>
+</ul>
+<hr>
+<h2 id="udp-trong-mô-hình-osi">UDP trong mô hình OSI</h2>
+<p>UDP hoạt động tại <strong>Layer 4 – Transport Layer</strong>, kết hợp với các giao thức:</p>
+<ul>
+<li>DNS</li>
+<li>TFTP</li>
+<li>RTSP</li>
+<li>NTP</li>
+<li>SNMP</li>
+</ul>
+<hr>
+<h2 id="cấu-trúc-header-của-udp">Cấu trúc Header của UDP</h2>
+<p>Header UDP có độ dài <strong>8 byte</strong>, gồm:</p>
+<ul>
+<li>Source Port</li>
+<li>Destination Port</li>
+<li>Length</li>
+<li>Checksum</li>
+</ul>
+<hr>
+<h2 id="so-sánh-udp-và-tcp">So sánh UDP và TCP</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Tiêu chí</th>
+          <th>TCP</th>
+          <th>UDP</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Kết nối</td>
+          <td>Có</td>
+          <td>Không</td>
+      </tr>
+      <tr>
+          <td>Độ tin cậy</td>
+          <td>Cao</td>
+          <td>Thấp</td>
+      </tr>
+      <tr>
+          <td>Thứ tự gói</td>
+          <td>Có</td>
+          <td>Không</td>
+      </tr>
+      <tr>
+          <td>Độ trễ</td>
+          <td>Cao</td>
+          <td>Thấp</td>
+      </tr>
+      <tr>
+          <td>Header</td>
+          <td>Lớn</td>
+          <td>8 byte</td>
+      </tr>
+      <tr>
+          <td>Ứng dụng</td>
+          <td>Web, Mail</td>
+          <td>Game, Streaming</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="khi-nào-nên-dùng-udp">Khi nào nên dùng UDP?</h2>
+<ul>
+<li>Cần <strong>thời gian thực</strong></li>
+<li>Chấp nhận mất dữ liệu</li>
+<li>Tài nguyên hạn chế</li>
+<li>Multicast / broadcast</li>
+</ul>
+<hr>
+<h2 id="kết-luận">Kết luận</h2>
+<p><strong>UDP</strong> là giao thức đơn giản nhưng cực kỳ hiệu quả cho các ứng dụng <strong>thời gian thực</strong>. Dù không đảm bảo độ tin cậy như TCP, UDP vẫn giữ vai trò quan trọng nhờ <strong>tốc độ cao, độ trễ thấp và khả năng mở rộng tốt</strong>.</p>
+
+</body>
+</html>

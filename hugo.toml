@@ -1,25 +1,22 @@
-# Thay 'username' bằng tên GitHub của bạn và 'repo-name' bằng tên dự án
-baseURL = 'https://username.github.io/repo-name/' 
+baseURL = 'https://quanghoa24.github.io/'
 languageCode = 'vi-vn'
 title = 'Blog Lập Trình Mạng | Đào Quang Hòa'
 theme = 'PaperMod'
 
 [params]
-    # Kích hoạt chế độ Hồ sơ cá nhân (Profile Mode) cho trang chủ
-    [params.profileMode]
-        enabled = true
-        title = "Đào Quang Hòa"
-        subtitle = "Sinh viên CNTT | Chuyên sâu Network Programming"
-        imageUrl = "images/avatar.jpg" # Đảm bảo file này có trong static/images/
-        
-        [[menu.main]]
-    identifier = "posts"
-    name = "Blog"
-    url = "/posts/"
-    weight = 10
+    # Kích hoạt Home-info Mode để hiện giới thiệu ở trang chủ
+    [params.homeInfoParams]
+        Title = "Chào mừng đến với Blog của Hòa! 👋"
+        Content = "Nơi chia sẻ kiến thức về Socket, Java Backend và JavaScript Real-time."
 
-[[menu.main]]
-    identifier = "about"
-    name = "Hồ sơ cá nhân"
-    url = "/about/"
-    weight = 20
+    # Menu điều hướng
+    [[menu.main]]
+        identifier = "posts"
+        name = "Blog"
+        url = "/posts/"
+        weight = 10
+    [[menu.main]]
+        identifier = "about"
+        name = "Hồ sơ cá nhân"
+        url = "/about/"
+        weight = 20

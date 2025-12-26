@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <title>Tìm Hiểu RESTful API và Các Tiêu Chuẩn Viết API Hiệu Quả</title>
+</head>
+<body>
+    <h1>Tìm Hiểu RESTful API và Các Tiêu Chuẩn Viết API Hiệu Quả</h1>
+    <h2 id="giới-thiệu-restful-api">Giới thiệu RESTful API</h2>
+<p>RESTful API (Representational State Transfer API) là một phong cách kiến trúc và phương pháp tiếp cận được sử dụng rộng rãi trong việc xây dựng các dịch vụ web. RESTful API dựa trên giao thức HTTP để thực hiện các hoạt động CRUD (Create, Read, Update, Delete) trên các tài nguyên.</p>
+<p>Sự phổ biến của RESTful API đến từ:</p>
+<ul>
+<li>Tính đơn giản</li>
+<li>Dễ hiểu</li>
+<li>Khả năng mở rộng cao</li>
+<li>Phù hợp với các hệ thống phân tán hiện đại</li>
+</ul>
+<p><img alt="RESTful API Overview" loading="lazy" src="https://images.viblo.asia/5442e738-c456-4f58-a416-28765f6f25c2.png"></p>
+<hr>
+<h2 id="nguyên-tắc-cơ-bản-của-restful-api">Nguyên tắc cơ bản của RESTful API</h2>
+<p>RESTful API tuân theo <strong>6 nguyên tắc cốt lõi</strong> nhằm định hình cách giao tiếp giữa client và server.</p>
+<h3 id="1-client--server-máy-khách--máy-chủ">1. Client – Server (Máy khách – Máy chủ)</h3>
+<p>Client chịu trách nhiệm giao diện và trải nghiệm người dùng, trong khi server quản lý dữ liệu và logic nghiệp vụ. Việc tách biệt này giúp hệ thống dễ bảo trì và mở rộng.</p>
+<hr>
+<h3 id="2-stateless-không-trạng-thái">2. Stateless (Không trạng thái)</h3>
+<p>Mỗi request từ client phải chứa đầy đủ thông tin để server xử lý. Server <strong>không lưu trạng thái</strong> của client giữa các request, giúp tăng khả năng mở rộng và giảm phụ thuộc.</p>
+<hr>
+<h3 id="3-cacheable-có-thể-lưu-bộ-nhớ-đệm">3. Cacheable (Có thể lưu bộ nhớ đệm)</h3>
+<p>Response cần chỉ rõ có thể cache hay không, giúp:</p>
+<ul>
+<li>Giảm tải server</li>
+<li>Tăng tốc độ phản hồi cho client</li>
+</ul>
+<hr>
+<h3 id="4-uniform-interface-giao-diện-đồng-nhất">4. Uniform Interface (Giao diện đồng nhất)</h3>
+<ul>
+<li>Tài nguyên được truy cập qua URL duy nhất</li>
+<li>Dữ liệu biểu diễn bằng định dạng chuẩn (JSON, XML)</li>
+<li>Giao diện nhất quán giúp API dễ học và dễ sử dụng</li>
+</ul>
+<hr>
+<h3 id="5-layered-system-hệ-thống-phân-lớp">5. Layered System (Hệ thống phân lớp)</h3>
+<p>REST cho phép nhiều lớp trung gian như:</p>
+<ul>
+<li>Load Balancer</li>
+<li>Gateway</li>
+<li>Authentication Service</li>
+</ul>
+<p>Client không cần biết request đang đi qua bao nhiêu lớp.</p>
+<hr>
+<h3 id="6-code-on-demand-tùy-chọn">6. Code on Demand (Tùy chọn)</h3>
+<p>Server có thể gửi mã thực thi (ví dụ JavaScript) cho client để mở rộng chức năng, tuy nhiên nguyên tắc này <strong>không bắt buộc</strong>.</p>
+<hr>
+<h2 id="các-phương-thức-http-thường-dùng-trong-restful-api">Các phương thức HTTP thường dùng trong RESTful API</h2>
+<h3 id="1-get">1. GET</h3>
+<p>Truy vấn dữ liệu<br>
+Ví dụ:</p>
+
+</body>
+</html>

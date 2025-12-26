@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <title>Tối ưu hóa Server Đa luồng với mô hình Thread Pool</title>
+</head>
+<body>
+    <h1>Tối ưu hóa Server Đa luồng với mô hình Thread Pool</h1>
+    <h2 id="tối-ưu-hóa-server-đa-luồng-với-mô-hình-thread-pool">Tối ưu hóa Server Đa luồng với mô hình Thread Pool</h2>
+<p><img alt="Thread Pool Overview" loading="lazy" src="https://images.viblo.asia/efdf086b-41d8-4d60-b6e8-a94ac6c51db9.png"></p>
+<p>Trong các hệ thống <strong>server hiện đại</strong>, việc xử lý đồng thời nhiều yêu cầu từ client là yêu cầu bắt buộc. Nếu mỗi request tạo một luồng (thread) mới, server rất dễ rơi vào tình trạng <strong>quá tải tài nguyên</strong>, giảm hiệu năng và thậm chí bị treo.</p>
+<p>Mô hình <strong>Thread Pool</strong> ra đời nhằm giải quyết vấn đề này bằng cách <strong>tái sử dụng các luồng</strong>, giúp server hoạt động ổn định và hiệu quả hơn.</p>
+<hr>
+<h2 id="khái-niệm-thread-pool">Khái niệm Thread Pool</h2>
+<p><strong>Thread Pool</strong> là một tập hợp các <strong>thread được tạo sẵn</strong>, luôn ở trạng thái chờ để thực thi các tác vụ (task).</p>
+<p>Thay vì:</p>
+<ul>
+<li>Request → tạo thread → xử lý → hủy thread</li>
+</ul>
+<p>Thread Pool hoạt động như sau:</p>
+<ul>
+<li>Request → đưa vào <strong>hàng đợi (BlockingQueue)</strong></li>
+<li>Thread rảnh → lấy task → xử lý</li>
+<li>Xử lý xong → quay về pool</li>
+</ul>
+<hr>
+<h2 id="vì-sao-không-nên-tạo-thread-liên-tục">Vì sao không nên tạo thread liên tục?</h2>
+<p>Giả sử một Web Server:</p>
+<ul>
+<li>Mỗi request xử lý mất 0.5s</li>
+<li>100 request đến cùng lúc</li>
+<li>10 triệu request / tháng</li>
+</ul>
+<p>👉 Nếu mỗi request tạo một thread mới:</p>
+<ul>
+<li>Chi phí tạo thread rất lớn</li>
+<li>Tốn bộ nhớ stack</li>
+<li>Giảm hiệu năng</li>
+<li>Dễ gây <strong>OutOfMemoryError</strong></li>
+</ul>
+<p>➡️ <strong>Thread Pool</strong> giúp giải quyết triệt để vấn đề này.</p>
+<hr>
+<h2 id="cơ-chế-hoạt-động-của-thread-pool">Cơ chế hoạt động của Thread Pool</h2>
+<p><img alt="Thread Pool Queue" loading="lazy" src="https://images.viblo.asia/ef5de1ba-d8c6-480a-866a-1a9d4aca22c4.png"></p>
+<p>Cấu trúc cơ bản gồm:</p>
+<ul>
+<li><strong>Thread Pool</strong>: tập các thread cố định</li>
+<li><strong>BlockingQueue</strong>: hàng đợi các task</li>
+<li><strong>Worker Thread</strong>: lấy task ra xử lý</li>
+</ul>
+<p>Khi số request &gt; số thread:</p>
+<ul>
+<li>Request sẽ <strong>xếp hàng</strong></li>
+<li>Đợi đến khi có thread rảnh</li>
+</ul>
+<hr>
+<h2 id="executor-trong-java-là-gì">Executor trong Java là gì?</h2>
+<p><strong>Executor</strong> là một thành phần thuộc package <code>java.util.concurrent</code>, chịu trách nhiệm:</p>
+<ul>
+<li>Quản lý vòng đời thread</li>
+<li>Lập lịch thực thi task</li>
+<li>Tách biệt logic xử lý và quản lý thread</li>
+</ul>
+<p>👉 Executor đóng vai trò như <strong>wrapper</strong> cho Thread Pool, giúp lập trình viên:</p>
+<ul>
+<li>Không cần tự tạo thread</li>
+<li>Không cần tự quản lý queue</li>
+<li>Tập trung vào logic nghiệp vụ</li>
+</ul>
+<hr>
+<h2 id="các-loại-thread-pool-trong-java">Các loại Thread Pool trong Java</h2>
+<p>Java cung cấp lớp tiện ích <strong>Executors</strong> để tạo Thread Pool:</p>
+<h3 id="-single-thread-executor">🔹 Single Thread Executor</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Executors.<span style="color:#a6e22e">newSingleThreadExecutor</span>();
+</span></span></code></pre></div>
+</body>
+</html>

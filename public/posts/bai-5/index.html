@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <title>Xử lý Bất đồng bộ trong JavaScript: Từ Callback đến Async/Await</title>
+</head>
+<body>
+    <h1>Xử lý Bất đồng bộ trong JavaScript: Từ Callback đến Async/Await</h1>
+    <h2 id="giới-thiệu">Giới thiệu</h2>
+<p><img alt="Asynchronous JavaScript" loading="lazy" src="https://images.viblo.asia/a4c460bb-d717-48b2-8d2b-2265beab6dff.png"></p>
+<p>JavaScript là ngôn ngữ <strong>đơn luồng (single-threaded)</strong> nhưng lại có khả năng xử lý các tác vụ <strong>bất đồng bộ (asynchronous)</strong> rất hiệu quả.<br>
+Nhờ cơ chế này, JavaScript có thể xử lý các công việc tốn thời gian như:</p>
+<ul>
+<li>Gọi API</li>
+<li>Đọc / ghi file</li>
+<li>Xử lý sự kiện người dùng</li>
+<li>Timer, animation</li>
+</ul>
+<p>mà <strong>không làm treo chương trình</strong>.</p>
+<hr>
+<h2 id="bất-đồng-bộ-là-gì">Bất đồng bộ là gì?</h2>
+<p><img alt="Blocking vs Non-blocking" loading="lazy" src="https://images.viblo.asia/c4dcb16e-458c-4e18-a194-4b4287c81333.png"></p>
+<p><strong>Bất đồng bộ</strong> là cơ chế cho phép một tác vụ chạy nền, trong khi luồng chính vẫn tiếp tục thực thi các công việc khác.</p>
+<p>👉 Trái ngược với <strong>đồng bộ (synchronous)</strong>, nơi chương trình phải chờ tác vụ hoàn thành trước khi chạy tiếp.</p>
+<hr>
+<h2 id="callback--cách-tiếp-cận-truyền-thống">Callback – Cách tiếp cận truyền thống</h2>
+<p><img alt="Callback Function" loading="lazy" src="https://images.viblo.asia/827717a9-487a-45c1-8665-6888fe258f2f.png"></p>
+<h3 id="ví-dụ-callback">Ví dụ Callback</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">fetchData</span>(<span style="color:#a6e22e">callback</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">setTimeout</span>(() =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">callback</span>(<span style="color:#e6db74">&#34;Dữ liệu đã tải xong&#34;</span>);
+</span></span><span style="display:flex;"><span>  }, <span style="color:#ae81ff">1000</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">fetchData</span>(<span style="color:#a6e22e">data</span> =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">data</span>);
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div>
+</body>
+</html>

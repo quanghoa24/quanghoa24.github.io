@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <title>Socket là gì? Khái niệm nền tảng về giao thức TCP/IP và UDP</title>
+</head>
+<body>
+    <h1>Socket là gì? Khái niệm nền tảng về giao thức TCP/IP và UDP</h1>
+    <p><img alt="Socket Programming" loading="lazy" src="https://cloud-web-cms-beta.s3.cloud.cmctelecom.vn/socket_eb5681c677.jpg"></p>
+<p>Socket là một trong các khái niệm quen thuộc với lập trình viên, có cách thức hoạt động tương tự như một tập tin descriptor cấp thấp. Hiểu một cách đơn giản, Socket là điểm cuối (endpoint) của một liên kết truyền thông hai chiều giữa hai chương trình chạy trên mạng.</p>
+<h2 id="1-bản-chất-kỹ-thuật-của-socket">1. Bản chất kỹ thuật của Socket</h2>
+<p>Về mặt kỹ thuật, Socket là sự kết hợp giữa <strong>Địa chỉ IP</strong> và <strong>Số cổng (Port number)</strong>.</p>
+<ul>
+<li><strong>Địa chỉ IP:</strong> Xác định thiết bị trong mạng.</li>
+<li><strong>Số cổng:</strong> Xác định ứng dụng cụ thể trên thiết bị đó.</li>
+<li><strong>Công thức:</strong> <code>Socket = IP Address + Port Number</code></li>
+</ul>
+<h2 id="2-phân-loại-socket-phổ-biến">2. Phân loại Socket phổ biến</h2>
+<p>Trong lập trình mạng, chúng ta chủ yếu làm việc với hai loại Socket dựa trên giao thức tầng Transport:</p>
+<h3 id="21-stream-socket-dựa-trên-tcp">2.1. Stream Socket (Dựa trên TCP)</h3>
+<ul>
+<li><strong>Đặc điểm:</strong> Hướng kết nối (Connection-oriented).</li>
+<li><strong>Cơ chế:</strong> Dữ liệu được truyền đi đảm bảo không bị mất mát, đúng thứ tự và không bị lặp lại.</li>
+<li><strong>Ứng dụng:</strong> Web (HTTP), Email (SMTP), Truyền file (FTP).</li>
+</ul>
+<h3 id="22-datagram-socket-dựa-trên-udp">2.2. Datagram Socket (Dựa trên UDP)</h3>
+<ul>
+<li><strong>Đặc điểm:</strong> Không hướng kết nối (Connectionless).</li>
+<li><strong>Cơ chế:</strong> Dữ liệu được gửi đi nhanh chóng nhưng không đảm bảo độ tin cậy. Gói tin có thể bị mất hoặc đến sai thứ tự.</li>
+<li><strong>Ứng dụng:</strong> Streaming video, Voice chat, Game online.</li>
+</ul>
+<h2 id="3-quy-trình-hoạt-động-của-mô-hình-client-server">3. Quy trình hoạt động của mô hình Client-Server</h2>
+<p>Một hệ thống sử dụng Socket thường trải qua các bước sau:</p>
+<ol>
+<li><strong>Socket():</strong> Tạo một endpoint mới.</li>
+<li><strong>Bind():</strong> Gán địa chỉ IP và Port cho Socket (thường thực hiện ở phía Server).</li>
+<li><strong>Listen():</strong> Server đợi kết nối từ Client.</li>
+<li><strong>Accept():</strong> Chấp nhận kết nối.</li>
+<li><strong>Connect():</strong> Client yêu cầu kết nối tới Server.</li>
+<li><strong>Send/Receive:</strong> Trao đổi dữ liệu.</li>
+<li><strong>Close():</strong> Đóng kết nối.</li>
+</ol>
+<h2 id="4-tại-sao-socket-lại-quan-trọng">4. Tại sao Socket lại quan trọng?</h2>
+<p>Nếu không có Socket, việc lập trình mạng sẽ trở nên cực kỳ phức tạp vì lập trình viên phải tự xử lý các tầng giao thức vật lý và logic thấp hơn. Socket cung cấp một lớp trừu tượng (Abstraction layer) giúp chúng ta chỉ cần tập trung vào việc gửi và nhận dữ liệu giữa các tiến trình.</p>
+<hr>
+<p><em>Bài viết này nằm trong chuỗi series về Lập trình mạng Java/JS chuyên sâu của Đào Quang Hòa.</em></p>
+
+</body>
+</html>

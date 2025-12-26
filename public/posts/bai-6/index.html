@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <title>Java (Backend) với JavaScript (Real-time)</title>
+</head>
+<body>
+    <h1>Java (Backend) với JavaScript (Real-time)</h1>
+    <p><img alt="Fetch API là gì" loading="lazy" src="https://interdata.vn/blog/wp-content/uploads/2025/05/API-Fetch-la-gi.jpg"></p>
+<p>Trong phát triển web hiện đại, việc tương tác với máy chủ để gửi và nhận dữ liệu là cốt lõi của mọi ứng dụng. <strong>Fetch API</strong>, một công nghệ mạnh mẽ của JavaScript, đã trở thành giải pháp tiêu chuẩn cho tác vụ này, mang lại hiệu suất vượt trội và cú pháp minh bạch.</p>
+<p>Đọc bài viết để hiểu <strong>Fetch API là gì, cách hoạt động, lợi ích và những ứng dụng thực tế</strong>, giúp lập trình viên từ mọi cấp độ dễ dàng nắm bắt.</p>
+<hr>
+<h2 id="fetch-là-gì">Fetch là gì?</h2>
+<h3 id="fetch-api-trong-javascript-là-gì">Fetch API trong JavaScript là gì?</h3>
+<p><strong>Fetch API</strong> là một giao diện hiện đại của JavaScript dùng để thực hiện các yêu cầu HTTP như <strong>GET, POST, PUT, DELETE</strong> và xử lý phản hồi từ máy chủ một cách linh hoạt ngay trong trình duyệt.</p>
+<p>Fetch API được thiết kế để <strong>thay thế XMLHttpRequest (XHR)</strong>, mang lại cú pháp gọn gàng hơn nhờ sử dụng <strong>Promise</strong>, giúp việc xử lý các tác vụ bất đồng bộ trở nên trực quan và dễ bảo trì hơn.</p>
+<hr>
+<h2 id="api-fetch-là-gì">API Fetch là gì?</h2>
+<p>Khi sử dụng Fetch API, bạn chỉ cần gọi hàm <code>fetch()</code> với URL mong muốn, kèm theo các tùy chọn như:</p>
+<ul>
+<li><code>method</code></li>
+<li><code>headers</code></li>
+<li><code>body</code></li>
+<li><code>mode</code>, <code>credentials</code>, …</li>
+</ul>
+<p>Hàm <code>fetch()</code> <strong>trả về một Promise</strong>, khi hoàn thành sẽ cung cấp đối tượng <strong>Response</strong> để kiểm tra trạng thái và trích xuất dữ liệu (JSON, text, blob,…).</p>
+<p>Fetch API cũng tích hợp tốt với:</p>
+<ul>
+<li><strong>CORS</strong></li>
+<li><strong>Service Workers</strong></li>
+<li><strong>Progressive Web Apps (PWA)</strong></li>
+</ul>
+<hr>
+<h2 id="api-fetch-hoạt-động-như-thế-nào">API Fetch hoạt động như thế nào?</h2>
+<p>Fetch API sử dụng cú pháp <strong>dựa trên Promise</strong>, giúp xử lý bất đồng bộ rõ ràng hơn.</p>
+<h3 id="ví-dụ-gọi-api-bằng-fetch">Ví dụ gọi API bằng Fetch</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">&#39;https://api.example.com/data&#39;</span>)
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">response</span> =&gt; <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">json</span>())
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">data</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">data</span>))
+</span></span><span style="display:flex;"><span>  .<span style="color:#66d9ef">catch</span>(<span style="color:#a6e22e">error</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#39;Lỗi:&#39;</span>, <span style="color:#a6e22e">error</span>));
+</span></span></code></pre></div>
+</body>
+</html>
