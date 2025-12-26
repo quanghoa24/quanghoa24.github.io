@@ -1,8 +1,9 @@
 ---
 title: "Hồ sơ năng lực & Tiểu sử khoa học"
 date: 2025-12-26
-layout: "about"
 ---
+
+![Avatar](/images/avatar.jpg)
 
 # 👨‍💻 ĐÀO QUANG HÒA
 **Sinh viên Công nghệ thông tin | Chuyên sâu Java & JavaScript Network**

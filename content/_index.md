@@ -1,7 +1,6 @@
 ---
 title: "Sơ yếu lý lịch - Đào Quang Hòa"
 date: 2025-12-26
-layout: "profile" 
 ---
 
 # Giới thiệu về mình
