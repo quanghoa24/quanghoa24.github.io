@@ -1,6 +1,7 @@
-baseURL = 'http://localhost:1313/'
-languageCode = 'vi-vn'
-title = 'Blog Lập Trình Mạng | Đào Quang Hòa'
+baseURL = "https://quanghoa24.github.io/"
+languageCode = "vi-vn"
+title = "Blog Lập Trình Mạng | Đào Quang Hòa"
+
 theme = "PaperMod"
 
 [params]
